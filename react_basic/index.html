@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello React!</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <style>
+            .spanClass{
+                color: red;
+                font-size: medium;
+            }
+        </style>
+        <script>
+            class HelloWorld extends React.Component {
+                render() {
+                    return React.createElement(
+                        'div', 
+                        { id: 'hello-world' }, 
+                        React.createElement('p', null, "-This is react element by P tag of HTML"),
+                        React.createElement('p', null, 
+                        React.createElement('span', {'className': "spanClass"}, "span tag of HTML as sibling of above p tag as child of div element")
+                            )
+                        );
+                }
+            }
+           // ReactDOM.render(React.createElement(HelloWorld), document.getElementById('root'))
+        </script>
+        <script >
+            
+        </script>
+        
+        <script type="text/babel">
+            // function components 
+            // props is optional and return either null (not undefined ) or react.element in the form of JSX
+            function Hello(props){
+                return (<div> Hello {props.name}</div> );
+            }
+            function showTime(){
+                const time = new Date().toLocaleTimeString();
+                const timeElement = (
+                    <div>
+                        <p> It is now {time}</p>
+                    </div>
+                );
+                ReactDOM.render(timeElement, document.getElementById('root'))
+            }
+            const myFirstElement = (
+                <div>My first React Element</div>
+                );
+            ReactDOM.render(<Hello name="test"/>, document.getElementById('root'))
+           // setInterval(showTime, 1000);
+        </script>
+    </body>
+</html>
